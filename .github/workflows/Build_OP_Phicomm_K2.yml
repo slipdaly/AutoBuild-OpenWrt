@@ -102,3 +102,16 @@ jobs:
       with:
         name: OpenWrt
         path: openwrt/bin
+    - name: Assemble artifact
+      run: |
+        cd openwrt
+        rm -rf ./artifact/
+        mkdir -p ./artifact/
+        find ./bin/targets/ -name "*combined*img*" | xargs -i mv -f {} ./artifact/
+        find ./bin/targets/ -name "*sysupgrade*bin*" | xargs -i mv -f {} ./artifact/
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: OpenWrt phicomm k2 5.4
+        path: ./openwrt/artifact/
