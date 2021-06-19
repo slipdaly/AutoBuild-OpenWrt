@@ -64,14 +64,6 @@ jobs:
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
-    - name: Clone extra luci source code
-      run: |
-        git clone https://github.com/honwen/luci-app-aliddns openwrt/package/luci-app-aliddns
-        git clone https://github.com/zxlhhyccc/luci-app-serverchan openwrt/package/luci-app-serverchan
-        git clone https://github.com/Kinodi/luci-theme-atmaterial openwrt/package/luci-theme-atmaterial
-        git clone https://github.com/jerrykuku/luci-theme-argon openwrt/package/luci-theme-argon
-        git clone https://github.com/Lienol/openwrt-package openwrt/package/openwrt-package
-        git clone -b lede https://github.com/pymumu/luci-app-smartdns openwrt/package/luci-app-smartdns
     - name: Update & Install feeds
       working-directory: ./openwrt
       run: |
